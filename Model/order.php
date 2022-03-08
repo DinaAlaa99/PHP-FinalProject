@@ -5,6 +5,11 @@ class order{
     private $order_id;
     private $date;
     private $download_count;
+    public function __construct($order_id , $date,$download_count) {
+        $this->setOrderId($order_id);
+        $this->setDate($date);
+        $this->setDownloadCount($download_count);
+    }
     
 
     /**

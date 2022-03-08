@@ -5,6 +5,11 @@ class token{
     private $token_id;
     private $remember_me;
 
+    public function __construct($token_id ,$remember_me) {
+        $this->setOrderId($token_id);
+        $this->setDate($remember_me);
+    }
+
     /**
      * Get the value of token_id
      */
