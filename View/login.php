@@ -8,15 +8,28 @@
 <title> Login Page </title>
 </head>
 <body>
-    <center> <h1> Login Form </h1> </center>
-    <form method="post" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
-        <div class="container">
-            <label>Username : </label>
-            <input type="text" placeholder="email..." name="email" required> </br>
-            <label>Password : </label>
-            <input type="password" placeholder="password..." name="password" required> </br>
-            <button type="submit">Login</button>
-        </div>
-    </form>
+<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+    <div class="imgcontainer">
+        <!--<img src="img_avatar2.png"
+             alt="Avatar"
+             class="avatar">-->
+    </div>
+
+    <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username"  name="email" required> <br>
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" required> <br>
+
+        <button type="submit" name="login">Login</button> <br>
+        <label>
+            <input type="checkbox" checked="checked" name="remember_me"> Remember me
+        </label>
+    </div>
+
+</form>
+
+
 </body>
 </html>

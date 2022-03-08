@@ -6,11 +6,12 @@ class user
     private $password;
     private $email;
 
-    public function __construct($user_id , $password,$email) {
-        $this->setUser_id($user_id);
-        $this->setPassword($password);
+    public function __construct($email,$password) {
+        $this->setPassword(sha1($password));
         $this->setEmail($email);
+
     }
+
     /**
      * Get the value of username
      */

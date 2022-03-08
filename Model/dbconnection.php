@@ -17,12 +17,12 @@ class dbconnection
 $Capsule->setAsGlobal();
 $Capsule->bootEloquent();}
 
- static  function insert_user()
+ static  function insert_user($user)
     {
        //$user->getUserid();
         Capsule::table('user')->insert([
-            'email' => 'kayla@example.com',
-            'password' => sha1(123456)
+            'email' => $user->getUserid(),
+            'password' => sha1($user->getpassword())
         ]);
 
 
@@ -30,11 +30,21 @@ $Capsule->bootEloquent();}
     }
 static  function  select_user($user)
 {
+    $myemail=$user->getEmail();
     $users = Capsule::table('user')
-        ->select('email', 'password')
-        ->where('email', '=','$user->email')
-        ->where ('password', '=', sha1($user->password))
-        ->get();
+        ->select('userid')
+        ->where('email', 'like',"$myemail")->value("userid");
+        //->get();
+
+   print_r($users);
+    //var_dump($users);
+    if ($users){
+        return true;
+    }
+    else
+    {
+        return false;//redirect on first page tell him there is a problem
+    }
 }
 
 }
