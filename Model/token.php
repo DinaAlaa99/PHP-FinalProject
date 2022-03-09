@@ -6,8 +6,8 @@ class token{
     private $remember_me;
 
     public function __construct($token_id ,$remember_me) {
-        $this->setOrderId($token_id);
-        $this->setDate($remember_me);
+        $this->setTokenId($token_id);
+        $this->setRememberMe($remember_me);
     }
 
     /**
