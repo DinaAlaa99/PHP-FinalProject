@@ -24,9 +24,9 @@
             <p   style="color:grey;width: 350px;">Notice:Password has to be (6-18) ch long, contain at least one lower case, Capital case and a number</p>
             <h2>Confirm-password</h2>
             <input type="password"  name="confirm" placeholder="Confirm password">
-            <h2>Credit card</h2>
+            <h2>Card number</h2>
             <input type="text" placeholder="Credit card" name="creditCard">
-            <h2>Date</h2>
+            <h2>Expiration date</h2>
             <input type="month" name="date" min="<?php echo(date("Y-m")) ?>" max="<?php echo(date('Y-m', strtotime('+3 years')))?>" >
             <br><br><br>
             <button type="submit">Confirm</button>
