@@ -2,7 +2,7 @@
 require_once ("vendor/autoload.php");
 $mydb = new dbconnection();
 //$mydb->insert_user();
-require_once "view/login.php";
+require_once ("View/login.php");
 //$_SESSION["id"]=5;
 $check=login::check_Login();
 if($check)
@@ -12,7 +12,7 @@ if($check)
 
 
 }
-else{echo"false index";}
+else{//echo"false index";}
 
 if (isset($_POST["login"])) {
     $email=$_POST["email"];
@@ -29,4 +29,5 @@ if (isset($_POST["login"])) {
     /*dbconnection:: insert_token($user);*/
 
 
+}
 }

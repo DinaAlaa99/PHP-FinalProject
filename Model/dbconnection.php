@@ -43,19 +43,24 @@ static  function  select_user($user)
         //->get();
 
    //print_r($users);//get my id
-    echo"<br>";
-    echo"$users";
+    //echo"<br>";
+    //echo"$users";
     $userid=$users;
 
-    echo"<br>";
+    //echo"<br>";
     if (is_numeric($users)){
+        //echo"done";
+       header("location:View/download.php");
+        echo"done2";
         if (isset($_POST["checkbox"])){
            // $_POST["remember_me"]=true;
+           echo "kkkkk";
             dbconnection:: insert_token($users);
+            echo "kkkkk";
         }
         //echo"cookie";
       //  echo $_COOKIE["remember_me"];
-      header("Location: View/download.php");
+     // require_once("View/download.php");
     }
     else
     {

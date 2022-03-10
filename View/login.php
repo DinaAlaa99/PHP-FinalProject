@@ -8,7 +8,7 @@
 <title> Login Page </title>
 </head>
 <body>
-<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
+<form method="post">
     <div class="imgcontainer">
         <!--<img src="img_avatar2.png"
              alt="Avatar"
