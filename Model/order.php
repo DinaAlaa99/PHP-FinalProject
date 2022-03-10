@@ -4,11 +4,11 @@ class order{
      
     private $order_id;
     private $date;
-    private $download_count;
-    public function __construct($order_id , $date,$download_count) {
-        $this->setOrderId($order_id);
+    static $download_count;
+    public function __construct($date) {
+
         $this->setDate($date);
-        $this->setDownloadCount($download_count);
+
     }
     
 
@@ -55,9 +55,9 @@ class order{
     /**
      * Get the value of download_count
      */
-    public function getDownloadCount()
+  public static function getDownloadCount()
     {
-        return $this->download_count;
+        return order::$download_count;
     }
 
     /**
@@ -65,10 +65,10 @@ class order{
      *
      * @return  self
      */
-    public function setDownloadCount($download_count)
+   public static function setDownloadCount($download_count)
     {
-        $this->download_count = $download_count;
+       order::$download_count = $download_count;
 
-        return $this;
+        return $download_count;
     }
 }

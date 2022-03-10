@@ -46,5 +46,24 @@ static  function  select_user($user)
         return false;//redirect on first page tell him there is a problem
     }
 }
+    static function insertOrder($order_date,$user_id,$product_id)
+    {
+
+        Capsule::table('order')->insert([
+            'date' =>"$order_date",
+            'user_id'=>"$user_id",
+            'productid'=>"$product_id"
+
+        ]);
+    }
+    static function  countOrder($user_id)
+    {
+
+        $orders = Capsule::table('order')
+            ->select('user_id')
+            ->where('user_id', '=',"$user_id")->count();
+        echo $orders;
+        return $orders;
+    }
 
 }
