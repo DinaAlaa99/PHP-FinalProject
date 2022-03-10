@@ -6,25 +6,24 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> Login Page </title>
+<!--<link rel="stylesheet" href="styles/styles.css">-->
 </head>
 <body>
-<form action="<?php echo $_SERVER["PHP_SELF"];?>" method="post">
-    <div class="imgcontainer">
-        <!--<img src="img_avatar2.png"
-             alt="Avatar"
-             class="avatar">-->
-    </div>
+<center><h1>XYZ</h1></center>
+<form  method="post">
 
-    <div class="container">
-        <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username"  name="email" required> <br>
+    
+
+    <div class="right">
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter your email"  name="email" required> <br>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required> <br>
+        <input type="password" placeholder="Enter your Password" name="password" required> <br>
 
         <button type="submit" name="login">Login</button> <br>
         <label>
-            <input type="checkbox" checked="checked" name="remember_me"> Remember me
+            <input type="checkbox" checked="checked" name="checkbox"> Remember me
         </label>
     </div>
 
