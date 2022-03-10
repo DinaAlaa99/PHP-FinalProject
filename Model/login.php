@@ -4,6 +4,7 @@
 class login
 {
     public static $flag =-1;
+    ///<!--<?php echo $_SERVER["PHP_SELF"];
 
     static function check_Login(){
         if (isset($_SESSION["id"])&&is_numeric($_SESSION["id"])){
