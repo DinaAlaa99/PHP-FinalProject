@@ -10,8 +10,8 @@ class user
         $this->setPassword(sha1($password));//$this->setPassword(sha1($password));
         $this->setEmail($email);
         $value=sha1($password);
-        echo"$value";
-        echo "$password";
+        //echo"$value";
+        //echo "$password";
 
     }
 

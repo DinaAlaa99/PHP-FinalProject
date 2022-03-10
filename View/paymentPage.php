@@ -29,7 +29,7 @@
             <h2>Expiration date</h2>
             <input type="month" name="date" min="<?php echo(date("Y-m")) ?>" max="<?php echo(date('Y-m', strtotime('+3 years')))?>" >
             <br><br><br>
-            <button type="submit">Confirm</button>
+            <button type="submit" name="submit">Confirm</button>
         </form>
     </div>
 

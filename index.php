@@ -6,7 +6,7 @@ $mydb = new dbconnection();
 
 //$_SESSION["id"]=5;
 
-
+//$page="paymentPage";
 
 $check=login::check_Login();
 
@@ -14,23 +14,32 @@ $check=login::check_Login();
 if($check)
 {
     echo"echeck remeberme";
-    header("Location: View/download.php");
+   $page="download";
 
 
 }
 else{
-    //header("Location:View//paymentPage.php");
-    require_once "View/paymentPage.php";
-    echo "jhhbhb";
-    validate::validate_data();
+   //header("location:index.php?page=paymentPage");
+    //require_once "View/paymentPage.php";
+    //echo "jhhbhb";
+    $page="paymentPage"; 
     
-    echo"false index";}
+    if(validate::validate_data())
+    {
+        //require_once "View/login.php"; 
+        $page="login"; 
+    }
+    
+    //echo"false index";
+}
 
 if (isset($_POST["login"])) {
     $email=$_POST["email"];
     $password=$_POST["password"];
     $user= new user($email,$password);
  $check=dbconnection::select_user($user);
+ if($check)
+ $page="download";
 
  //  dbconnection::insert_user($user);
     //var_dump($user);
@@ -42,3 +51,4 @@ if (isset($_POST["login"])) {
 
 
 }
+require_once("View/$page.php");

@@ -1,7 +1,8 @@
 <?php
+//session_start();
 class validate{
     static function validate_data(){
-if(isset($_POST['confirm'])){
+if(isset($_POST['submit'])){
 $email = ($_POST['email']);
 var_dump($email);
 $password = ($_POST['password']);
@@ -33,10 +34,11 @@ if ($allValid) {
     var_dump($user);
     
     //open session and save data to session
-    session_start();
+    //session_start();
+    $_SESSION["id"]=5;
     dbconnection::sign_up($user);
     echo"rowan el sbab";
-    require_once "View/login.php";
+    //require_once ("View/login.php");
 
     //require_once ("View/login.php");
     //$_SESSION['email'] = $email;
@@ -44,9 +46,11 @@ if ($allValid) {
     //$_SESSION['cardNumber'] = $cardNumber;
     //require database handling file
     //require_once "../DBhandler.php";
+    return true;
     
 } else {
-    require_once "unsuccessful.php";
+    //require_once "unsuccessful.php";
+     return false;
 }
 
 }
