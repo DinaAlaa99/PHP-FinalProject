@@ -4,7 +4,11 @@ $mydb = new dbconnection();
 //$mydb->insert_user();
 
 
+
 //$_SESSION["id"]=5;
+
+
+//$current_url = "View/";
 
 
 
@@ -15,14 +19,24 @@ if($check)
 {
     echo"echeck remeberme";
     header("Location: View/download.php");
-
-
 }
 else{
-    //header("Location:View//paymentPage.php");
-    require_once "View/paymentPage.php";
+   // header("Location:View/paymentPage.php");
+    //die();
     echo "jhhbhb";
-    validate::validate_data();
+    require_once "View/paymentPage.php";
+    // login::redirect($current_url.'paymentPage.php');
+   //header("location:http://localhost/PHP-FINALPROJECT/finalProject/View/paymentPage.php");
+   //exit();
+ 
+
+   if( validate::validate_data())
+   {
+   require_once "View/login.php";}
+   else 
+   require_once "View/unsuccessful.php";
+
+
     
     echo"false index";}
 
@@ -30,7 +44,7 @@ if (isset($_POST["login"])) {
     $email=$_POST["email"];
     $password=$_POST["password"];
     $user= new user($email,$password);
- $check=dbconnection::select_user($user);
+    $check=dbconnection::select_user($user);
 
  //  dbconnection::insert_user($user);
     //var_dump($user);
@@ -39,6 +53,4 @@ if (isset($_POST["login"])) {
     //echo $check;
     echo"<br>";
     /*dbconnection:: insert_token($user);*/
-
-
 }

@@ -1,9 +1,11 @@
 <?php
-
+require_once "vendor/autoload.php";
 
 class login
 {
     public static $flag =-1;
+    //$_SESSION["id"] = 5;
+
     ///<!--<?php echo $_SERVER["PHP_SELF"];
 
     static function check_Login(){
@@ -24,5 +26,13 @@ class login
         //return $flag;
 
     }
+    static  function redirect($url)
+{
+    ob_start();
+    header('Location:' . $url);
+    ob_end_flush();
+    die();
+}
+
 
 }

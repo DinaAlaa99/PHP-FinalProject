@@ -53,7 +53,7 @@ class dbconnection
             }
             //echo"cookie";
             //  echo $_COOKIE["remember_me"];
-            require_once(" View/download.php");
+            require_once("View/download.php");
            // header("Location: View/download.php");
         } else {
             echo "please enter the right password or email";

@@ -1,7 +1,9 @@
 <?php
+require_once "vendor/autoload.php";
+
 class validate{
     static function validate_data(){
-if(isset($_POST['confirm'])){
+if(isset($_POST['submit'])){
 $email = ($_POST['email']);
 var_dump($email);
 $password = ($_POST['password']);
@@ -36,7 +38,12 @@ if ($allValid) {
     session_start();
     dbconnection::sign_up($user);
     echo"rowan el sbab";
-    require_once "View/login.php";
+   // require_once "View/login.php";
+
+   ///header("location:http://localhost/PHP-FINALPROJECT/finalProject/View/login.php");
+        // exit; 
+    return true;
+
 
     //require_once ("View/login.php");
     //$_SESSION['email'] = $email;
@@ -46,7 +53,8 @@ if ($allValid) {
     //require_once "../DBhandler.php";
     
 } else {
-    require_once "unsuccessful.php";
+   return false;
+    // require_once "unsuccessful.php";
 }
 
 }
