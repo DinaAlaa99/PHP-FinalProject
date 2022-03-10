@@ -25,7 +25,7 @@ $allValid=$isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isVali
 
 if($allValid)
 {
-  echo("Payment successfull!<br>");
+  require_once("Successview.php");
   //open session and save data to session 
   session_start();
   $_SESSION['email']=$email;
@@ -34,7 +34,7 @@ if($allValid)
   //require database handling file
   require_once("../DBhandler.php");
 }else {
-  echo("Payment unsuccessfull, Data not valid<br>");
+  require_once("unsuccessful.php");
 }
 
 ?>
