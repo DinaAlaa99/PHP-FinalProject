@@ -13,7 +13,7 @@ $check=login::check_Login();
 // if there's cookie
 if($check)
 {
-    echo"echeck remeberme";
+    //echo"echeck remeberme";
     $page="download";
 
 
@@ -43,9 +43,9 @@ if (isset($_POST["login"])) {
 
  //  dbconnection::insert_user($user);
     //var_dump($user);
-    echo "<br>";
+    //echo "<br>";
     //echo $check;
-    echo "<br>";
+   // echo "<br>";
     /*dbconnection:: insert_token($user);*/
 }
 require_once "View/$page.php";

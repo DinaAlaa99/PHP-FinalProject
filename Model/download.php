@@ -1,5 +1,5 @@
 <?php
-/*
+
 if(isset($_GET['path']))
 {
 //Read the filename

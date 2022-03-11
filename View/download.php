@@ -1,6 +1,6 @@
 <?php
 
-/*if(isset($_GET['path']))
+if(isset($_GET['path']))
 {
 //Read the filename
     $filename = $_GET['path'];
@@ -32,5 +32,5 @@
 }
 else
     echo "Filename is not defined."
-*/
+
 ?>

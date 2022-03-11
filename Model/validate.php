@@ -38,7 +38,7 @@ if ($allValid) {
     $_SESSION["id"]=5;
     dbconnection::sign_up($user);
     $userid=dbconnection::select_userId($user);
-    echo"rowan el sbab";
+    //echo"rowan el sbab";====
     //require_once ("View/login.php");
 
     //require_once ("View/login.php");
