@@ -12,7 +12,7 @@
 <center><h1>XYZ</h1></center>
 <form  method="post">
 
-    
+
 
     <div class="right">
         <label for="email"><b>Email</b></label>
