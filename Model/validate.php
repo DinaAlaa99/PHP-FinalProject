@@ -35,9 +35,15 @@ if ($allValid) {
     var_dump($user);
     
     //open session and save data to session
-    session_start();
+    //session_start();
+
     dbconnection::sign_up($user);
+    $userid=dbconnection::select_userId($user);
     echo"rowan el sbab";
+    $_SESSION['userId'] =$userid;
+    //$_SESSION['email'] = $user->getEmail();
+
+
    // require_once "View/login.php";
 
    ///header("location:http://localhost/PHP-FINALPROJECT/finalProject/View/login.php");
@@ -46,9 +52,9 @@ if ($allValid) {
 
 
     //require_once ("View/login.php");
-    //$_SESSION['email'] = $email;
-    //$_SESSION['password'] = $password;
-    //$_SESSION['cardNumber'] = $cardNumber;
+    //
+
+   
     //require database handling file
     //require_once "../DBhandler.php";
     

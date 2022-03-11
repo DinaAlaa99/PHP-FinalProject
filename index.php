@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
 
+=======
+session_start();
+>>>>>>> dina
 require_once "vendor/autoload.php";
 $mydb = new dbconnection();
 //$mydb->insert_user();
@@ -20,15 +24,14 @@ if ($check) {
     //require_once "View/paymentPage.php";
     //echo "jhhbhb";
     $page = "paymentPage";
-
     if (validate::validate_data()) {
         //require_once "View/login.php";
         $page = "login";
+        $userid = $_SESSION['userId'] ;
+        echo $userid;
     }
-
     //echo"false index";
 }
-
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -36,15 +39,16 @@ if (isset($_POST["login"])) {
     $check = dbconnection::select_user($user);
     if ($check) {
         $page = "download";
+        //$userid = $_SESSION['userId'];
+        //echo $userid;
     }
-
-    //  dbconnection::insert_user($user);
+    //dbconnection::insert_user($user);
     //var_dump($user);
-
     echo "<br>";
     //echo $check;
     echo "<br>";
     /*dbconnection:: insert_token($user);*/
-
 }
 require_once "View/$page.php";
+
+
