@@ -28,6 +28,22 @@ class dbconnection
         ]);
 
     }
+    public static function select_userId($user)
+    {
+        $myemail = $user->getEmail();
+        $mypassword = $user->getPassword();
+        $users = Capsule::table('user')
+            ->select('userid')
+            ->where('email', 'like', "$myemail")
+            ->where('password', 'like', "$mypassword")
+            ->get();
+
+      
+        $userid = $users;
+
+        return $userid;
+       
+    }
     public static function select_user($user)
     {
         $myemail = $user->getEmail();
@@ -79,6 +95,14 @@ class dbconnection
             ->where('remember_me', 'like', "$cookie")
             ->value("userid");
         return $cookie_id;
+    }
+    public static function select_cookie_userId($cookie)
+    {
+        $user_id = Capsule::table('token')
+            ->select('userid')
+            ->where('remember_me', 'like', "$cookie")
+            ->get();
+        return $user_id;
     }
     public static function update_cookie($cookie)
     {
