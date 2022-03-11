@@ -6,28 +6,35 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title> Login Page </title>
-<!--<link rel="stylesheet" href="styles/styles.css">-->
+<link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-<center><h1>XYZ</h1></center>
-<form  method="post">
 
+<div class="content">
+    <div class="left">
+        <img src="images/img2.png" alt="">
+        <h1 class = "logo">XYZ</h1> 
+    </div>
 
 
     <div class="right">
-        <label for="email"><b>Email</b></label>
-        <input type="text" placeholder="Enter your email"  name="email" required> <br>
+        <div class="login">
+        <form  method="post">
+             <h2>E-mail</h2>
+            <input type="email" placeholder="E-mail" name="email">
+            <h2>Password</h2>
+            <input type="password" placeholder="Password" name="password">
+             <br><br><br>
+            <button type="submit" name="login">login</button>
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter your Password" name="password" required> <br>
-
-        <button type="submit" name="login">Login</button> <br>
-        <label>
+        <label class="remember me">
             <input type="checkbox" checked="checked" name="checkbox"> Remember me
         </label>
+        </form>
+        </div>
     </div>
 
-</form>
+</div>
 
 
 </body>

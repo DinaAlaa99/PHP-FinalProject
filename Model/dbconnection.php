@@ -73,7 +73,7 @@ class dbconnection
             return true;
            // header("Location: View/download.php");
         } else {
-            echo "please enter the right password or email";
+            //echo "please enter the right password or email";
             return false;
         }
     }

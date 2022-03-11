@@ -4,7 +4,7 @@ class validate{
     static function validate_data(){
 if(isset($_POST['submit'])){
 $email = ($_POST['email']);
-var_dump($email);
+//var_dump($email);
 $password = ($_POST['password']);
 $cPassword = ($_POST['confirm']);
 $date = ($_POST['date']);
@@ -25,33 +25,43 @@ $isMatching = ($cPassword === $password);
 $isValidcCard = preg_match("/^[0-9]{16}$/", $cardNumber);
 $maxDate = date('Y-m-d', strtotime('+3 years'));
 $isValidDate = $date < $maxDate;
-$allValid=1;
+//$allValid=1;
 
-//x$allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
+$allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
 
 if ($allValid) {
     $user = new user($email, $password);
-    var_dump($user);
+    //var_dump($user);
     
     //open session and save data to session
     //session_start();
-    $_SESSION["id"]=5;
-    dbconnection::sign_up($user);
-    $userid=dbconnection::select_userId($user);
-    echo"rowan el sbab";
-    //require_once ("View/login.php");
+    //$_SESSION["id"]=5;
+    if (dbconnection::select_user($user))
+    {   
+        
+        return 0; //user already exist
 
-    //require_once ("View/login.php");
-    //
+    }
+    else{
+        
+        dbconnection::sign_up($user);
+        $userid = dbconnection::select_userId($user);
+        $_SESSION["id"] = $userid;
 
-   
-    //require database handling file
-    //require_once "../DBhandler.php";
-    return true;
+//require_once ("View/login.php");
+
+//require_once ("View/login.php");
+//
+
+//require database handling file
+//require_once "../DBhandler.php";
+return 1; //correct info
+
+    }
     
 } else {
     //require_once "unsuccessful.php";
-     return false;
+     return -1; //invalid info
 }
 
 }
