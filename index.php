@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-
-=======
 session_start();
->>>>>>> dina
 require_once "vendor/autoload.php";
 $mydb = new dbconnection();
 //$mydb->insert_user();
