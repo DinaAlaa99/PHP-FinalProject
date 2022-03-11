@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <center><h1>XYZ</h1></center>
+    
 <div class="content">
-
-    <div class="left">
+  
+   <div class="left">
         <img src="images/img2.png" alt="">
+        <h1 class = "logo">XYZ</h1> 
     </div>
 
     <div class="right">

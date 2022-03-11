@@ -8,47 +8,49 @@ $mydb = new dbconnection();
 
 //$page="paymentPage";
 
-$check=login::check_Login();
+$check = login::check_Login();
 
 // if there's cookie
-if($check)
-{
-    //echo"echeck remeberme";
-    $page="download";
+if ($check) {
+    echo "echeck remeberme";
+    $page = "download";
 
-
-}
-else{
-   //header("location:index.php?page=paymentPage");
+} else {
+    //header("location:index.php?page=paymentPage");
     //require_once "View/paymentPage.php";
-    //echo "jhhbhb";
-    $page="paymentPage"; 
-    
-    if(validate::validate_data())
-    {
-        //require_once "View/login.php"; 
-        $page="login"; 
+    $page = "paymentPage";
+
+    if (validate::validate_data()==1) {
+        //require_once "View/login.php";
+        $page = "login";
     }
-    
-    //echo"false index";
+    elseif(validate::validate_data()==0)
+    {
+        $page="paymentpage";
+        echo "user already exists";
+    }
+    elseif(validate::validate_data()==-1)
+    {
+        //$page="unsuccessful";
+        $page = "paymentpage";
+         echo "invalid info";
+
+    }
 }
-
 if (isset($_POST["login"])) {
-    $email=$_POST["email"];
-    $password=$_POST["password"];
-    $user= new user($email,$password);
- $check=dbconnection::select_user($user);
- if($check)
- $page="download";
-
- //  dbconnection::insert_user($user);
-    //var_dump($user);
-    //echo "<br>";
-    //echo $check;
-   // echo "<br>";
-    /*dbconnection:: insert_token($user);*/
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $user = new user($email, $password);
+    $check = dbconnection::select_user($user);
+    if ($check) {
+        $page = "download";
+    }
+    else{
+        $page = "login";
+    }
+ 
+    echo "<br>";
+    echo "<br>";
+   
 }
 require_once "View/$page.php";
-
-
-
