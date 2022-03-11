@@ -1,10 +1,11 @@
 <?php
 //session_start();
+use Illuminate\Database\Capsule\Manager as Capsule;
 class validate{
     static function validate_data(){
 if(isset($_POST['submit'])){
 $email = ($_POST['email']);
-var_dump($email);
+//var_dump($email);
 $password = ($_POST['password']);
 $cPassword = ($_POST['confirm']);
 $date = ($_POST['date']);
@@ -31,16 +32,20 @@ $allValid=1;
 
 if ($allValid) {
     $user = new user($email, $password);
-    var_dump($user);
+    //var_dump($user);
     
     //open session and save data to session
     //session_start();
-    $_SESSION["id"]=5;
+   // $_SESSION["id"]=5;
     dbconnection::sign_up($user);
-    echo"rowan el sbab";
+    //echo"rowan el sbab";
     //require_once ("View/login.php");
-
-    //require_once ("View/login.php");
+$id=Capsule::table('user')
+->select('userid')
+->where('email', 'like', "$email")
+->value("userid");
+    $_SESSION['id'] = $id;
+    
     //$_SESSION['email'] = $email;
     //$_SESSION['password'] = $password;
     //$_SESSION['cardNumber'] = $cardNumber;

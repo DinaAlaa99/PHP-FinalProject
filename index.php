@@ -1,10 +1,12 @@
 <?php
+session_start();
 require_once ("vendor/autoload.php");
 $mydb = new dbconnection();
 //$mydb->insert_user();
+//header("location:index.php?page=paymentPage");
+//exit();
 
 
-//$_SESSION["id"]=5;
 
 //$page="paymentPage";
 
@@ -13,7 +15,7 @@ $check=login::check_Login();
 // if there's cookie
 if($check)
 {
-    echo"echeck remeberme";
+   // echo"echeck remeberme";
    $page="download";
 
 
@@ -23,11 +25,13 @@ else{
     //require_once "View/paymentPage.php";
     //echo "jhhbhb";
     $page="paymentPage"; 
+    //header("location:index.php?page=$page");
     
     if(validate::validate_data())
-    {
+    { //$_SESSION["id"]=5;
         //require_once "View/login.php"; 
         $page="login"; 
+        //echo "555";
     }
     
     //echo"false index";
@@ -39,6 +43,8 @@ if (isset($_POST["login"])) {
     $user= new user($email,$password);
  $check=dbconnection::select_user($user);
  if($check)
+ 
+  // if($_SESSION["id"]==58)
  $page="download";
 
  //  dbconnection::insert_user($user);
@@ -51,4 +57,11 @@ if (isset($_POST["login"])) {
 
 
 }
+/*if((!isset ($_GET["page"]))||$_GET["page"]!=$page)
+{ 
+    header("location:index.php?page=$page");
+    echo $page;
+
+}*/
+
 require_once("View/$page.php");

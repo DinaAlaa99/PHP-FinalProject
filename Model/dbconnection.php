@@ -45,7 +45,7 @@ class dbconnection
         //echo "$users";
         $userid = $users;
 
-        echo "<br>";
+       // echo "<br>";
         if (is_numeric($users)) {
             if (isset($_POST["checkbox"])) {
                 // $_POST["remember_me"]=true;

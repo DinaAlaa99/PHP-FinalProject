@@ -27,9 +27,14 @@ if(isset($_GET['path']))
         die();
     }
     else{
+        
         echo "File does not exist.";
+        
     }
 }
-else
-    echo "Filename is not defined."
+else{
+if($_SESSION['id']==92)
+    echo "Filename is not defined.";
+else 
+  echo"wronguser";}
 ?>
