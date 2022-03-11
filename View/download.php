@@ -1,5 +1,5 @@
 <?php
-
+echo "in download page";
 if (isset($_GET['path'])) {
 //Read the filename
     $filename = $_GET['path'];
