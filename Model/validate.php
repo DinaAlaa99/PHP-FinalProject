@@ -1,6 +1,5 @@
 <?php
-require_once "vendor/autoload.php";
-
+//session_start();
 class validate{
     static function validate_data(){
 if(isset($_POST['submit'])){
@@ -36,20 +35,11 @@ if ($allValid) {
     
     //open session and save data to session
     //session_start();
-
+    $_SESSION["id"]=5;
     dbconnection::sign_up($user);
     $userid=dbconnection::select_userId($user);
     echo"rowan el sbab";
-    $_SESSION['userId'] =$userid;
-    //$_SESSION['email'] = $user->getEmail();
-
-
-   // require_once "View/login.php";
-
-   ///header("location:http://localhost/PHP-FINALPROJECT/finalProject/View/login.php");
-        // exit; 
-    return true;
-
+    //require_once ("View/login.php");
 
     //require_once ("View/login.php");
     //
@@ -57,10 +47,11 @@ if ($allValid) {
    
     //require database handling file
     //require_once "../DBhandler.php";
+    return true;
     
 } else {
-   return false;
-    // require_once "unsuccessful.php";
+    //require_once "unsuccessful.php";
+     return false;
 }
 
 }

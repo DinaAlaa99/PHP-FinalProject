@@ -71,7 +71,7 @@ class dbconnection
             //  echo $_COOKIE["remember_me"];
             //require_once("View/download.php");
             return true;
-            // header("Location: View/download.php");
+           // header("Location: View/download.php");
         } else {
             echo "please enter the right password or email";
             return false;
