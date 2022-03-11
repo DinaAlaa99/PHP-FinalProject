@@ -1,5 +1,5 @@
 <?php
-/*
+
 if(isset($_GET['path']))
 {
 //Read the filename
@@ -31,5 +31,5 @@ if(isset($_GET['path']))
     }
 }
 else
-    echo "Filename is not defined."*/
+    echo "Filename is not defined."
 ?>
