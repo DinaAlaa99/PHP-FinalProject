@@ -27,18 +27,23 @@ if(isset($_POST["button1"])) {
 
 
    // $user_order=new order($order_date);
-
-   $user_id=1;
+   echo "hhhhhhhhhhhhhhh<br>";
+var_dump($_SESSION["id"]);
+echo "<br>";
+   $user_id= $_SESSION["id"] ;
+  
    $product_id=1;
-
-   if(dbconnection::countOrder($user_id)<=7)
+   $count=dbconnection::select_count($user_id);
+   if($count <7)
     {
         $order_date = new DateTime();
         $order_date=$order_date->format('Y-m-d');
         echo $order_date;
-        dbconnection::insertOrder($order_date,$user_id,$product_id);
+        $count++;
+        dbconnection::update_count($count,$user_id);
+        //dbconnection::insertOrder($order_date,$user_id);
         // $user_order->setDownloadCount($count_order);
-        header("Location:download.php?path=$file_name");
+        header("Location:View/download.php?path=$file_name");
     }
     else
         echo "you downloaded 7 times you should pay again";

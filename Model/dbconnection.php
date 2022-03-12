@@ -30,18 +30,16 @@ class dbconnection
     }
     public static function select_userId($user)
     {
+       // var_dump($user);
         $myemail = $user->getEmail();
-        $mypassword = $user->getPassword();
-        $users = Capsule::table('user')
+        $id = Capsule::table('user')
             ->select('userid')
             ->where('email', 'like', "$myemail")
-            ->where('password', 'like', "$mypassword")
-            ->get();
+            ->value("userid");
 
-      
-        $userid = $users;
+        var_dump($id);
 
-        return $userid;
+        return $id;
        
     }
     public static function select_user($user)
@@ -128,7 +126,7 @@ class dbconnection
 //inserting date of payment and setting download count to 0 &user id
 
         Capsule::table('order')->insert(
-            ['date' => date('Y-m-d'), 'download-count' => 0, 'user_id' => $userId]//'productid'=> 5
+            ['date' => date('Y-m-d'), 'download-count' => 0,'productid'=> 1, 'user_id' => $userId] 
 
         );}
 
@@ -142,13 +140,12 @@ Capsule::table('user')->insert([
 
 }*/
 
-static function insertOrder($order_date,$user_id,$product_id)
+static function insertOrder($order_date,$user_id)
 {
-
     Capsule::table('order')->insert([
         'date' =>"$order_date",
         'user_id'=>"$user_id",
-        'productid'=>"$product_id"
+        'productid'=> 1
 
     ]);
 }
@@ -161,5 +158,23 @@ static function  countOrder($user_id)
     echo $orders;
     return $orders;
 }
+   public static function select_count($userid)
+    {
+
+        $count = Capsule::table('order')
+            ->select('download-count')
+            ->where('user_id', '=', "$userid")
+            ->value("download-count");
+        return $count;
+    }
+       public static function update_count($count,$userid)
+    {
+        
+ 
+        $affected = Capsule::table('order')
+            ->where('user_id', '=' ,"$userid")
+            ->update(['download-count' => "$count"]);
+    }
+
 
 }

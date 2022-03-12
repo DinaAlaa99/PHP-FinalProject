@@ -13,7 +13,7 @@ $check = login::check_Login();
 // if there's cookie
 if ($check) {
     echo "echeck remeberme";
-    $page = "download";
+    $page = "uipage";
 
 } else {
     //header("location:index.php?page=paymentPage");
@@ -43,11 +43,13 @@ if (isset($_POST["login"])) {
     $user = new user($email, $password);
     $check = dbconnection::select_user($user);
     if ($check) {
-        $page = "download";
+        $page = "uipage";
     }
     else{
         $page = "login";
+        echo "email or password is invalid";
     }
+
  
     echo "<br>";
     echo "<br>";

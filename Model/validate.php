@@ -25,9 +25,9 @@ $isMatching = ($cPassword === $password);
 $isValidcCard = preg_match("/^[0-9]{16}$/", $cardNumber);
 $maxDate = date('Y-m-d', strtotime('+3 years'));
 $isValidDate = $date < $maxDate;
-//$allValid=1;
+$allValid=1;
 
-$allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
+//$allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
 
 if ($allValid) {
     $user = new user($email, $password);
@@ -46,6 +46,7 @@ if ($allValid) {
         
         dbconnection::sign_up($user);
         $userid = dbconnection::select_userId($user);
+        //var_dump($userid);
         $_SESSION["id"] = $userid;
 
 //require_once ("View/login.php");
