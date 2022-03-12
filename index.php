@@ -19,8 +19,8 @@ if ($check) {
     //header("location:index.php?page=paymentPage");
     //require_once "View/paymentPage.php";
     $page = "paymentPage";
-
-    if (validate::validate_data()==1) {
+    if(isset($_POST["submit"]))
+    {if (validate::validate_data()==1) {
         //require_once "View/login.php";
         $page = "login";
     }
@@ -35,7 +35,7 @@ if ($check) {
         $page = "paymentpage";
          echo "invalid info";
 
-    }
+    }}
 }
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
