@@ -33,8 +33,10 @@ if(isset($_GET['path']))
     }
 }
 else{
-if($_SESSION['id']==92)
-    echo "Filename is not defined.";
+if($_SESSION['id']==93)
+   {echo "Filename is not defined.";
+    var_dump($_SESSION['id']);}
 else 
-  echo"wronguser";}
+{var_dump($_SESSION['id']);
+  echo"wronguser";}}
 ?>
