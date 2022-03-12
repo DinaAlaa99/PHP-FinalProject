@@ -1,38 +1,35 @@
 <?php
-echo "in download page";
-if (isset($_GET['path'])) {
+
+if(isset($_GET['path']))
+{
 //Read the filename
     $filename = $_GET['path'];
 //Check the file exists or not
-    if (file_exists($filename)) {
+    if(file_exists($filename)) {
 
 //Define header information
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');
         header("Cache-Control: no-cache, must-revalidate");
         header("Expires: 0");
-        header('Content-Disposition: attachment; filename="' . basename($filename) . '"');
+        header('Content-Disposition: attachment; filename="'.basename($filename).'"');
         header('Content-Length: ' . filesize($filename));
         header('Pragma: public');
 
 //Clear system output buffer
         flush();
-        $old_name = "aya.txt";
-        $new_name = "tryname.txt";
+        $old_name="aya.txt";
+        $new_name="tryname.txt";
 //Read the size of the file
         readfile($filename);
-        rename($old_name, $new_name);
+       // rename( $old_name, $new_name) ;
 //Terminate from the script
         die();
-    } else {
-
+    }
+    else{
         echo "File does not exist.";
-
     }
-} /*else {
-    if ($_SESSION['id'] == 94) {
-        echo "Filename is not defined.";
-    } else {
-        echo "wronguser";
-    }
-}*/
+}
+else
+    echo "Filename is not defined."
+?>
