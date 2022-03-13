@@ -1,5 +1,27 @@
 <?php
+session_start();
+require_once "../vendor/autoload.php";
+$mydb = new dbconnection();
 
+if (isset($_POST["login"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    $user = new user($email, $password);
+    $check = dbconnection::select_user($user);
+    if ($check) {
+        //$page = "uipage";
+        header("Location:uipage.php");
+
+    } else {
+        // $page = "login";
+        echo "email or password is invalid";
+    }
+
+
+    echo "<br>";
+    echo "<br>";
+
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,7 +41,7 @@
 
     <div class="right">
         <div class="login">
-        <form  method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
              <h2>E-mail</h2>
             <input type="email" placeholder="E-mail" name="email">
             <h2>Password</h2>

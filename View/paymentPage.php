@@ -1,3 +1,32 @@
+<?php
+session_start();
+require_once "../vendor/autoload.php";
+$mydb = new dbconnection();
+
+if (isset($_POST["submit"])) {
+    if (validate::validate_data() == 1) {
+        //require_once "View/login.php";
+        //$page = "login";
+        header("Location:login.php");
+
+
+    } elseif (validate::validate_data() == 0) {
+        //$page="paymentpage";
+        header("Location:paymentpage.php");
+
+
+        echo "user already exists";
+    } elseif (validate::validate_data() == -1) {
+        //$page="unsuccessful";
+        // $page = "paymentpage";
+        header("Location:paymentpage.php");
+
+        echo "invalid info";
+
+    }
+
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +46,7 @@
     </div>
 
     <div class="right">
-        <form  method="post">
+        <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <h2>E-mail</h2>
             <input type="email" placeholder="E-mail" name="email">
             <h2>Password</h2>

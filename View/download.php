@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+require_once "../vendor/autoload.php";
 if(isset($_GET['path']))
 {
 //Read the filename

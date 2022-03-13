@@ -175,6 +175,10 @@ static function  countOrder($user_id)
             ->where('user_id', '=' ,"$userid")
             ->update(['download-count' => "$count"]);
     }
+    public static function delete_cookie(){
+
+    }
+
 
 
 }
