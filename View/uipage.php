@@ -12,38 +12,35 @@ require_once ("Vendor/autoload.php");
 <html>
 <head>
 <title>Download Files</title>
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
 <!---<p><a href="download.php?path=aya.txt"><button>download</button></a></p>-->
 <?php
-//$old_name="aya.txt";
-//$new_name="tryname.txt";
-$file_name="product.txt";
-if(isset($_POST["button1"])) {
-    //button1($old_name, $new_name);
+
+//$file_name="product.txt";
+$file_name=dbconnection::get_productName().".txt";
+
+if(isset($_POST["download"])) {
     echo"in if";
     $database=new dbconnection();
-    //$count_order=0;
 
-
-   // $user_order=new order($order_date);
-   echo "hhhhhhhhhhhhhhh<br>";
+   echo "<br>";
 var_dump($_SESSION["id"]);
 echo "<br>";
    $user_id= $_SESSION["id"] ;
   
    $product_id=1;
    $count=dbconnection::select_count($user_id);
-   if($count <7)
+   if($count <20)
     {
         $order_date = new DateTime();
         $order_date=$order_date->format('Y-m-d');
         echo $order_date;
         $count++;
-        dbconnection::update_count($count,$user_id);
-        //dbconnection::insertOrder($order_date,$user_id);
-        // $user_order->setDownloadCount($count_order);
-        header("Location:View/download.php?path=$file_name");
+
+
+       header("Location:View/download.php?path=$file_name");
     }
     else
         echo "you downloaded 7 times you should pay again";
@@ -57,10 +54,28 @@ echo "<br>";
 }*/
 
 ?>
-<form method="post" >
+<!--<form method="post" >
     <input type="submit" name="button1"
-           class="button" value="button1" />
+           class="button" value="button1" />-->
 
 </form>
+<div class="content">
+    <div class="left">
+        <img src="images/img2.png" alt="">
+        <h1 class = "logo">XYZ</h1>
+    </div>
+    <div class="right">
+        <div class="rightcontainer">
+            <form method="post" >
+                <input type="submit" name="download"class="button" value="Download" />
+
+            </form><br>
+            <form method="post" >
+                <input type="submit" name="logout"class="button" value="Logout" />
+
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
