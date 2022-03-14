@@ -2,7 +2,6 @@
 session_start();
 require_once "../vendor/autoload.php";
 $mydb = new dbconnection();
-
 if (isset($_POST["submit"])) {
     if (validate::validate_data() == 1) {
         //require_once "View/login.php";
