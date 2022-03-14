@@ -24,17 +24,16 @@ if (isset($_POST["login"])) {
 }
 ?>
 <!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<?php include "head.php"?>
 <title> Login Page </title>
-<link rel="stylesheet" href="styles/styles.css">
+ 
+
 </head>
 <body>
 
 <div class="content">
     <div class="left">
-        <img src="images/img2.png" alt="">
+        <img src="../images/img2.png" alt="">
         <h1 class = "logo">XYZ</h1> 
     </div>
 
@@ -48,10 +47,10 @@ if (isset($_POST["login"])) {
             <input type="password" placeholder="Password" name="password">
              <br><br><br>
             <button type="submit" name="login">login</button>
+            <br><br>
+            <input type="checkbox" checked="checked" name="checkbox" style="width:10px;height:10px"> 
+            <label>Remember me</label>
 
-        <label class="remember me">
-            <input type="checkbox" checked="checked" name="checkbox"> Remember me
-        </label>
         </form>
         </div>
     </div>

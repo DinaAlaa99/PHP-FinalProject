@@ -9,11 +9,9 @@ if (isset($_POST["submit"])) {
         //$page = "login";
         header("Location:login.php");
 
-
     } elseif (validate::validate_data() == 0) {
         //$page="paymentpage";
         header("Location:paymentpage.php");
-
 
         echo "user already exists";
     } elseif (validate::validate_data() == -1) {
@@ -27,22 +25,17 @@ if (isset($_POST["submit"])) {
 
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=2.0">
-    <title>XYZ payment</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <?php include "head.php"?>
+    <title>XYZ </title>
+
 </head>
 <body>
-    
+
 <div class="content">
-  
+
    <div class="left">
-        <img src="images/img2.png" alt="">
-        <h1 class = "logo">XYZ</h1> 
+        <img src="../images/img2.png" alt="">
+        <h1 class = "logo">XYZ</h1>
     </div>
 
     <div class="right">
@@ -57,15 +50,15 @@ if (isset($_POST["submit"])) {
             <h2>Card number</h2>
             <input type="text" placeholder="Credit card" name="creditCard">
             <h2>Expiration date</h2>
-            <input type="month" name="date" min="<?php echo(date("Y-m")) ?>" max="<?php echo(date('Y-m', strtotime('+3 years')))?>" >
+            <input type="month" name="date" min="<?php echo (date("Y-m")) ?>" max="<?php echo (date('Y-m', strtotime('+3 years'))) ?>" >
             <br><br><br>
             <button type="submit" name="submit">Confirm</button>
         </form>
     </div>
 
-    
+
 </div>
 
-    
+
 </body>
 </html>
