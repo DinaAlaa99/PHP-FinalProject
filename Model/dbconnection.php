@@ -63,7 +63,7 @@ class dbconnection
         if (is_numeric($users)) {
             if (isset($_POST["checkbox"])) {
                 // $_POST["remember_me"]=true;
-                dbconnection::insert_token($users);
+                dbconnection::insert_token($users);////////
             }
             //echo"cookie";
             //  echo $_COOKIE["remember_me"];
@@ -78,7 +78,8 @@ class dbconnection
     public static function insert_token($userid)
     {
         $val = sha1(mt_rand(1, 90000) . 'SALT');
-        setcookie("remember_me", $val, 2147483647);
+        //$val=4;
+        setcookie("remember_me", $val, time() + 3600, '/');
         Capsule::table('token')->insert([
             'remember_me' => "$val",
             'userid' => "$userid",
@@ -105,7 +106,7 @@ class dbconnection
     public static function update_cookie($cookie)
     {
         $val = sha1(mt_rand(1, 90000) . 'SALT');
-        setcookie("remember_me", $val, 2147483647);
+        setcookie("remember_me", $val, 2147483647,'/');
         $affected = Capsule::table('token')
             ->where('remember_me', $cookie)
             ->update(['remember_me' => "$val"]);
@@ -181,10 +182,29 @@ static function  countOrder($user_id)
     }
     public static function delete_cookie($cookie){
         $deleted = Capsule::table('token')->where('remember_me', '=', $cookie)->delete();
+        echo "deleted";
 
 
     }
 
+    public static function get_productName()
+    {
+        $product_id=1;
+        $old_name = Capsule::table('product')
+            ->select('download-file')
+            ->where('productid', '=', "$product_id")
+            ->value("download-file");
+        echo $old_name;
+        return $old_name;
 
+    }
+    public static function update_productName($new_name)
+    {
+        $product_id=1;
+        $affected = Capsule::table('product')
+            ->where('productid', '=' ,"$product_id")
+            ->update(['download-file' => "$new_name"]);
+        echo $new_name;
+    }
 
 }

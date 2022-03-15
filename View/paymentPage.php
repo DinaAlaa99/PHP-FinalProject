@@ -10,13 +10,13 @@ if (isset($_POST["submit"])) {
 
     } elseif (validate::validate_data() == 0) {
         //$page="paymentpage";
-        header("Location:paymentpage.php");
+        header("Location:paymentPage.php");
 
         echo "user already exists";
     } elseif (validate::validate_data() == -1) {
         //$page="unsuccessful";
         // $page = "paymentpage";
-        header("Location:paymentpage.php");
+        header("Location:paymentPage.php");
 
         echo "invalid info";
 

@@ -44,7 +44,7 @@
         text-align: center;
     }
 
-    button{
+    button,.button{
         font-size: larger;
         border-radius: 7px;
         height: 40px;
@@ -53,7 +53,7 @@
         background-color:rgb(112, 112, 243);
         border: none;
     }
-    button:hover{
+    button:hover,.button:hover{
         background-color:darkblue;
     }
 

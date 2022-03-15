@@ -10,10 +10,6 @@ $cPassword = ($_POST['confirm']);
 $date = ($_POST['date']);
 $cardNumber = ($_POST['creditCard']);
 $date =($_POST['date']);
-
-
-
-
 $isEmailValid = filter_var($email, FILTER_VALIDATE_EMAIL);
 $isPwValid = preg_match("/[A-Z]/", $password)
 && preg_match("/[a-z]/", $password)
@@ -45,9 +41,7 @@ if ($allValid) {
     else{
         
         dbconnection::sign_up($user);
-        $userid = dbconnection::select_userId($user);
-        //var_dump($userid);
-        $_SESSION["id"] = $userid;
+
 
 //require_once ("View/login.php");
 

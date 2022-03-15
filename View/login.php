@@ -2,7 +2,7 @@
 session_start();
 require_once "../vendor/autoload.php";
 $mydb = new dbconnection();
-
+if(!isset( $_SESSION["id"])) {
 if (isset($_POST["login"])) {
     $email = $_POST["email"];
     $password = $_POST["password"];
@@ -10,18 +10,27 @@ if (isset($_POST["login"])) {
     $check = dbconnection::select_user($user);
     if ($check) {
         //$page = "uipage";
-        header("Location:uipage.php");
+        $userid = dbconnection::select_userId($user);
 
+        //var_dump($userid);
+        $_SESSION["id"] = $userid;
+
+        header("Location:uipage.php");
     } else {
         // $page = "login";
         echo "email or password is invalid";
+        header("Location:login.php");
+
     }
 
 
     echo "<br>";
     echo "<br>";
 
+}}else{
+    header("Location:uipage.php");
 }
+
 ?>
 <!DOCTYPE html>
 <?php include "head.php"?>
