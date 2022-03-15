@@ -20,6 +20,8 @@ include "../styles/styles.css";
 
 </head>
 <body>
+<button><a href="logout.php">logout</a></button>
+
 <!---<p><a href="download.php?path=aya.txt"><button>download</button></a></p>-->
 <?php
 //$old_name="aya.txt";
@@ -39,7 +41,7 @@ if(isset($_POST["button1"])) {
 var_dump($_SESSION["id"]);
 echo "<br>";
    $user_id= $_SESSION["id"] ;
-  
+  echo"$user_id";
    $product_id=1;
    $count=dbconnection::select_count($user_id);
    if($count <7)
@@ -80,9 +82,9 @@ if ($count < 7) {
     $count++;
     dbconnection::update_count($count,$user_id);
     ?>
-<a href="<?php echo "download.php?path=$file_name";?>">download</a>
+<button><a href="<?php echo "download.php?path=$file_name";?>">download</a></button>
 <?php } else { ?>
-<h2>you exceeded ur no of downloads</h2>
+<h2>you exceeded ur no of downloads </h2>
 <?php } ?>
 <!--<form method="post" >-->
 <!--    <input type="submit" name="button1"-->

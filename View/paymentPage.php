@@ -53,6 +53,8 @@ if (isset($_POST["submit"])) {
             <br><br><br>
             <button type="submit" name="submit">Confirm</button>
         </form>
+        <br>
+        <a href="login.php">already have an acount</a>
     </div>
 
 

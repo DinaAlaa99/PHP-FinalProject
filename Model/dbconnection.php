@@ -165,6 +165,7 @@ static function  countOrder($user_id)
             ->select('download-count')
             ->where('user_id', '=', "$userid")
             ->value("download-count");
+        //$count++;
         return $count;
     }
        public static function update_count($count,$userid)
@@ -175,7 +176,12 @@ static function  countOrder($user_id)
             ->where('user_id', '=' ,"$userid")
             ->update(['download-count' => "$count"]);
     }
-    public static function delete_cookie(){
+    public static function select_rememberme(){
+
+    }
+    public static function delete_cookie($cookie){
+        $deleted = Capsule::table('token')->where('remember_me', '=', $cookie)->delete();
+
 
     }
 
