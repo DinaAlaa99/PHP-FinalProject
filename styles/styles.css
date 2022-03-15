@@ -1,14 +1,17 @@
     center{
-        font-size: x-large;
+        font-size: large;
     }
     body{
         background-color: rgb(234, 245, 241);
+        font-size: small;
+
     }
     .content{
         
         display: flex;
-        margin: 0 auto;
+        margin: auto !important;
         width :80%;
+        margin-top: auto;
         
     }
     h2,h1{
@@ -18,7 +21,7 @@
     .left{
         max-width: 50%;
         float: left;
-        margin-top: auto;
+        margin: auto;
     }
    
    
@@ -29,6 +32,7 @@
         width: 50%;
         float: right;
         padding-bottom: 20px;
+        margin: auto;
        
     }
     input{
