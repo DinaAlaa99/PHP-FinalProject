@@ -1,3 +1,7 @@
+<?php
+session_start();
+require_once "../vendor/autoload.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +14,7 @@
 <body style="background-color: rgb(234, 245, 241);">
 
     <h2 style="color: rgb(112, 112, 243);">
-        Invalid information , please <a href="../PaymentIndex.php">Re-Enter</a>
+        Invalid information , please <a href="../index.php">Re-Enter</a>
          your information
     </h2>
 </body>
