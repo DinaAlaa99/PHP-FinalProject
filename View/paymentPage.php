@@ -19,8 +19,6 @@ if (isset($_POST["submit"])) {
         echo "invalid info";
         header("Location:paymentPage.php");
 
-        
-
     }
 
 }

@@ -18,39 +18,39 @@ $check = login::check_Login();
 //echo"beforecheck";
 if ($check) {
     //echo"aftercheck";
-   // echo "echeck remeberme";
+    // echo "echeck remeberme";
     // $page = "uipage";
     header("Location:View/uipage.php");
 
 } else {
     //header("location:index.php?page=paymentPage");
     //require_once "View/paymentPage.php";
-   // $page = "paymentPage";
+    // $page = "paymentPage";
     //echo "else";
     header("Location:View/paymentPage.php");
 
 //    if (isset($_POST["submit"])) {
-//        if (validate::validate_data() == 1) {
-//            //require_once "View/login.php";
-//            //$page = "login";
-//            header("Location:View/login.php");
-//
-//
-//        } elseif (validate::validate_data() == 0) {
-//            //$page="paymentpage";
-//            header("Location:View/paymentpage.php");
-//
-//
-//            echo "user already exists";
-//        } elseif (validate::validate_data() == -1) {
-//            //$page="unsuccessful";
-//            // $page = "paymentpage";
-//            header("Location:View/paymentpage.php");
-//
-//            echo "invalid info";
-//
-//        }
-//    }
+    //        if (validate::validate_data() == 1) {
+    //            //require_once "View/login.php";
+    //            //$page = "login";
+    //            header("Location:View/login.php");
+    //
+    //
+    //        } elseif (validate::validate_data() == 0) {
+    //            //$page="paymentpage";
+    //            header("Location:View/paymentpage.php");
+    //
+    //
+    //            echo "user already exists";
+    //        } elseif (validate::validate_data() == -1) {
+    //            //$page="unsuccessful";
+    //            // $page = "paymentpage";
+    //            header("Location:View/paymentpage.php");
+    //
+    //            echo "invalid info";
+    //
+    //        }
+    //    }
 }
 //if (isset($_POST["login"])) {
 //    $email = $_POST["email"];

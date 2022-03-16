@@ -1,53 +1,37 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> c82b419000365dc6b9fb0973c1a4b8089f1c5435
     center{
-        font-size: x-large;
+        font-size: large;
     }
     body{
         background-color: rgb(234, 245, 241);
+        font-size: small;
+
     }
     .content{
         
         display: flex;
-<<<<<<< HEAD
-=======
         margin: 0 auto;
         width :80%;
->>>>>>> c82b419000365dc6b9fb0973c1a4b8089f1c5435
         
     }
     h2,h1{
         color: rgb(112, 112, 243);
-<<<<<<< HEAD
-      
-=======
->>>>>>> c82b419000365dc6b9fb0973c1a4b8089f1c5435
         margin-bottom: 5px;
     }
     .left{
         max-width: 50%;
         float: left;
-<<<<<<< HEAD
-    }
-   
-=======
-        margin-top: auto;
+        margin: auto;
     }
    
    
->>>>>>> c82b419000365dc6b9fb0973c1a4b8089f1c5435
     .right{
         padding-left: 30%;
         align-items: center;
         justify-content: center;
         width: 50%;
         float: right;
-<<<<<<< HEAD
-=======
         padding-bottom: 20px;
->>>>>>> c82b419000365dc6b9fb0973c1a4b8089f1c5435
+        margin: auto;
        
     }
     input{
@@ -56,14 +40,11 @@
         height: 40px;
         border-radius: 5px;
     }
-<<<<<<< HEAD
-=======
     .logo{
         text-align: center;
     }
->>>>>>> c82b419000365dc6b9fb0973c1a4b8089f1c5435
 
-    button{
+    button,.button{
         font-size: larger;
         border-radius: 7px;
         height: 40px;
@@ -72,11 +53,9 @@
         background-color:rgb(112, 112, 243);
         border: none;
     }
-    button:hover{
+    button:hover,.button:hover{
         background-color:darkblue;
     }
-<<<<<<< HEAD
-=======
 
     img {
         max-width: 100%;
@@ -87,4 +66,3 @@
         width: 10px;
         height: 10px;
     }
->>>>>>> c82b419000365dc6b9fb0973c1a4b8089f1c5435

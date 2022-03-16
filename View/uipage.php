@@ -4,7 +4,7 @@ $new_name="tryname.txt";
 /*echo "<p><a href=\"download.php?path=aya.txt\"><button>download</button></a></p>";
 rename( $old_name, $new_name) ;
 echo "<p><a href=\"download.php?path=$new_name\"><button>download2</button></a></p>";
-*/
+ */
 session_start();
 //echo "<pre>";
 //var_dump($_COOKIE);
@@ -21,12 +21,12 @@ require_once "../vendor/autoload.php";
 /*echo "<form method=\"post\" action=\" download.php?path=$new_name\">";
 include "../styles/styles.css";
 
- echo "<input type=\"submit\" name=\"button1\"value=\"Button1\" />";*/
+echo "<input type=\"submit\" name=\"button1\"value=\"Button1\" />";*/
 ?>
 <!DOCTYPE html>
 <?php include "head.php"?>
 <title> Download Page </title>
- 
+
 
 </head>
 <body>
@@ -35,7 +35,7 @@ include "../styles/styles.css";
 <!---<p><a href="download.php?path=aya.txt"><button>download</button></a></p>-->
 <?php
 
-if(isset( $_SESSION["id"])) {
+if (isset($_SESSION["id"])) {
 //$file_name="product.txt";
     $database = new dbconnection();
     $file_name = dbconnection::get_productName() . ".txt";
@@ -61,20 +61,26 @@ if(isset( $_SESSION["id"])) {
             //dbconnection::insertOrder($order_date,$user_id);
             // $user_order->setDownloadCount($count_order);
             header("Location:download.php?path=$file_name");
-        } else
+        } else {
             echo "you downloaded 7 times you should pay again";
+            //delete token userid
+            //delete order userid
+            dbconnection::delete_user_from_order_table($user_id);
+            dbconnection::delete_user_from_token_table($user_id);
+            dbconnection::delete_user($user_id);
+
+        }
+
     }
     if (isset($_POST["button2"])) {
     }
 
-
     /*function button1( $old_name, $new_name) {
 
-        rename( $old_name, $new_name) ;
-        echo"in function";
-    }*/
-}
-else{
+rename( $old_name, $new_name) ;
+echo"in function";
+}*/
+} else {
     header("Location:paymentPage.php");
 }
 ?>
