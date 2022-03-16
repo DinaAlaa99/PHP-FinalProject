@@ -4,9 +4,9 @@ class validate
 {
     public static function validate_data()
     {
-        if (isset($_POST['submit'])) {
+        if (isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
             $email = ($_POST['email']);
-//var_dump($email);
+            //var_dump($email);
             $password = ($_POST['password']);
             $cPassword = ($_POST['confirm']);
             $date = ($_POST['date']);
@@ -17,47 +17,36 @@ class validate
             && preg_match("/[a-z]/", $password)
             && preg_match("/[0-9]/", $password)
             && strlen($password) > 8
-            && strlen($password) < 16
-                && (strcmp($cPassword, $password) == 0);
+            && strlen($password) < 16;
+            $isMatching = (strcmp($cPassword, $password) == 0);
             var_dump("is pw valid :" . $isPwValid);
-//$isMatching = ($cPassword === $password);
+            //$isMatching = ($cPassword === $password);
             $isValidcCard = preg_match("/^[0-9]{16}$/", $cardNumber);
             $maxDate = date('Y-m-d', strtotime('+3 years'));
             $isValidDate = $date < $maxDate;
             $allValid = true;
             var_dump("all valid:" . $allValid);
 
-//$allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
+            $allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
 
-            if ($isPwValid) {
+            if ($allValid && isset($_POST['submit']) && $_SERVER["REQUEST_METHOD"] == "POST") {
                 $user = new user($email, $password);
-                //var_dump($user);
 
-                //open session and save data to session
-                //session_start();
-                //$_SESSION["id"]=5;
                 if (dbconnection::select_user($user)) {
 
-                    return 0; //user already exist
+                    $flag = 0; //user already exist ( do some html =>> email arleady used)
 
                 } else {
                     dbconnection::sign_up($user);
-
-                    //require_once ("View/login.php");
-
-                    //require_once ("View/login.php");
-                    //
-
-                    //require database handling file
-                    //require_once "../DBhandler.php";
-                    return 1; //correct info
+                    $flag = 1; //correct info
 
                 }
 
             } else {
                 //require_once "unsuccessful.php";
-                return -1; //invalid info
+                $flag = -1; //invalid info
             }
+            return $flag;
 
         }
     }

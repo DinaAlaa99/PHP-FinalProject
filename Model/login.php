@@ -15,7 +15,7 @@ class login
         //            var_dump($_COOKIE);
         //            die;
         // echo((dbconnection::select_cookie($_COOKIE["remember_me"]));
-        if (isset($_SESSION["userId"]) && is_numeric($_SESSION["userId"])) {
+        if (isset($_SESSION["id"]) && is_numeric($_SESSION["id"])) {
             //echo "done session";
             return true; //is_numeric(dbconnection::select_cookie($_COOKIE["remember_me"]))
         } elseif (isset($_COOKIE["remember_me"])) {

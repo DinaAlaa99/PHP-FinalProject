@@ -97,6 +97,10 @@ if (isset($_SESSION["id"])) {
           <form method="get" action="logout.php" >
               <button type="submit" name="logout"class="button">logout</button>
 
+            </form><br>
+              <form method="get" action="editProfile.php" >
+              <button type="submit" name="Edit Profile"class="button">Edit Profile</button>
+
             </form>
 <!--            <button><a href="logout.php">logout</a></button>-->
 

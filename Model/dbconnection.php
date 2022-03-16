@@ -75,6 +75,64 @@ class dbconnection
             return false;
         }
     }
+    public static function select_user_email($userId,$email)
+    {
+
+        $id = Capsule::table('user')
+            ->select('userid')
+            ->where('email', 'like', "$email")
+            ->value("userid");
+        
+        //echo $id;
+        //die;
+        if($userId==$id)
+        {
+            return true;
+        }
+        else if(is_numeric($id)) //there is a user with the same email
+        {
+            return false;
+        }
+        else{
+            return true;
+        }
+
+      
+    }
+    
+    public static function select_user_password($userId,$oldpassword)
+    {
+
+        $password = Capsule::table('user')
+            ->select('password')
+            ->where('userid', '=', $userId)
+            ->value("password");
+        
+   
+
+        if (strcmp($password,sha1($oldpassword)) == 0) {
+             return true;
+        }
+        else 
+        { 
+            echo "you entered a wrong password";
+        }
+    }
+    public static function update_user($user,$userId)
+    {
+        
+    
+        $affected = Capsule::table('user')
+        ->where('userid', $userId)
+        ->update(['email' => $user->getEmail(),
+                  'password' => $user->getpassword()]);
+       
+        if($affected)
+        {
+            echo "data updated successfully";
+        }
+    
+    }
     public static function delete_user_from_token_table($userId)
     {
         $deleted = Capsule::table('token')->where('userid', '=', $userId)->delete();
