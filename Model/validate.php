@@ -25,9 +25,9 @@ $isMatching = ($cPassword === $password);
 $isValidcCard = preg_match("/^[0-9]{16}$/", $cardNumber);
 $maxDate = date('Y-m-d', strtotime('+3 years'));
 $isValidDate = $date < $maxDate;
-$allValid=1;
+//$allValid=1;
 
-//$allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
+$allValid = $isEmailValid && $isMatching && $isPwValid && $isValidcCard && $isValidDate;
 
 if ($allValid) {
     $user = new user($email, $password);
