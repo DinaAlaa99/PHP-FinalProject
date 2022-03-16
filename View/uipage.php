@@ -52,7 +52,7 @@ if (isset($_SESSION["id"])) {
         $product_id = 1;
         $count = dbconnection::select_count($user_id);
 
-        if ($count < 7) {
+        if ($count < _download_count) {
             $order_date = new DateTime();
             $order_date = $order_date->format('Y-m-d');
             echo $order_date;
@@ -68,6 +68,9 @@ if (isset($_SESSION["id"])) {
             dbconnection::delete_user_from_order_table($user_id);
             dbconnection::delete_user_from_token_table($user_id);
             dbconnection::delete_user($user_id);
+            setcookie("remember_me", "", -1, '/');
+            session_unset();
+            session_destroy();
 
         }
 
@@ -75,11 +78,7 @@ if (isset($_SESSION["id"])) {
     if (isset($_POST["button2"])) {
     }
 
-    /*function button1( $old_name, $new_name) {
 
-rename( $old_name, $new_name) ;
-echo"in function";
-}*/
 } else {
     header("Location:paymentPage.php");
 }

@@ -15,4 +15,4 @@ session_destroy();
 //    }
 //}
 header("Location:paymentPage.php");
-session_destroy();
+//session_destroy();
