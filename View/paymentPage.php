@@ -16,6 +16,7 @@ if (isset($_POST["submit"])) {
     } elseif (validate::validate_data() == -1) {
         //$page="unsuccessful";
         // $page = "paymentpage";
+        echo "invalid info";
         header("Location:paymentPage.php");
 
         
@@ -38,7 +39,23 @@ if (isset($_POST["submit"])) {
     </div>
 
     <div class="right">
+
+    
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+            <?php 
+/*
+            
+            if(validate::validate_data() == 0)
+            {
+                echo("<div style='color:red'>email already exists</div>");
+            }
+            elseif(validate::validate_data() == -1)
+            {
+                echo("<div style='color:red'>Invalid information</div>");
+            }
+*/
+
+            ?>
             <h2>E-mail</h2>
             <input type="email" placeholder="E-mail" name="email">
             <h2>Password</h2>

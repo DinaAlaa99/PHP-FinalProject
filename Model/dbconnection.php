@@ -48,28 +48,22 @@ class dbconnection
         $mypassword = $user->getPassword();
         $users = Capsule::table('user')
             ->select('userid')
-            ->where('email', 'like', "$myemail")
-            ->where('password', 'like', "$mypassword")
+            ->where('email', '=', $myemail)
+            ->where('password', '=', $mypassword)
             ->value("userid");
 
-        //->get();
-
-        //print_r($users);//get my id
-        //echo "<br>";
-        //echo "$users";
+        
         $userid = $users;
-
+        echo($users);
         //echo "<br>";=========
         if (is_numeric($users)) {
             if (isset($_POST["checkbox"])) {
                 // $_POST["remember_me"]=true;
                 dbconnection::insert_token($users);////////
+                
             }
-            //echo"cookie";
-            //  echo $_COOKIE["remember_me"];
-            //require_once("View/download.php");
             return true;
-           // header("Location: View/download.php");
+
         } else {
             //echo "please enter the right password or email";
             return false;
@@ -221,3 +215,5 @@ static function  countOrder($user_id)
     }
 
 }
+
+
