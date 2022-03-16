@@ -2,36 +2,25 @@
 session_start();
 require_once "../vendor/autoload.php";
 $mydb = new dbconnection();
-
 if (isset($_POST["submit"])) {
     if (validate::validate_data() == 1) {
         //require_once "View/login.php";
         //$page = "login";
-        echo "here";
-        die;
         header("Location:login.php");
 
     } elseif (validate::validate_data() == 0) {
         //$page="paymentpage";
-        header("Location:paymentpage.php");
+        header("Location:paymentPage.php");
 
         echo "user already exists";
-        die;
     } elseif (validate::validate_data() == -1) {
         //$page="unsuccessful";
         // $page = "paymentpage";
-        header("Location:paymentpage.php");
-
-        echo "invalid info";
-        die;
+        header("Location:paymentPage.php");
 
     }
 
 }
-
-
-
-
 ?>
     <?php include "head.php"?>
     <title>XYZ </title>
@@ -61,10 +50,9 @@ if (isset($_POST["submit"])) {
             <input type="month" name="date" min="<?php echo (date("Y-m")) ?>" max="<?php echo (date('Y-m', strtotime('+3 years'))) ?>" >
             <br><br><br>
             <button type="submit" name="submit">Confirm</button>
-            <?php
- 
-?>
         </form>
+        <br>
+        <a href="login.php">already have an acount</a>
     </div>
 
 

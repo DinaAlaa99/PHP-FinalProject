@@ -26,8 +26,7 @@ if ($check) {
     //header("location:index.php?page=paymentPage");
     //require_once "View/paymentPage.php";
     // $page = "paymentPage";
-    echo "else";
-    die;
+    //echo "else";
     header("Location:View/paymentPage.php");
 
 //    if (isset($_POST["submit"])) {

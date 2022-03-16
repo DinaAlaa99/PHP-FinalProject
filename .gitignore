@@ -1,2 +1,7 @@
+vendor
+src
+composer.json
+composer.lock
 .idea/
 vendor/
+

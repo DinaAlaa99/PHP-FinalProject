@@ -30,7 +30,7 @@ class dbconnection
     }
     public static function select_userId($user)
     {
-       // var_dump($user);
+        // var_dump($user);
         $myemail = $user->getEmail();
         $id = Capsule::table('user')
             ->select('userid')
@@ -40,7 +40,7 @@ class dbconnection
         var_dump($id);
 
         return $id;
-       
+
     }
     public static function select_user($user)
     {
@@ -63,22 +63,41 @@ class dbconnection
         if (is_numeric($users)) {
             if (isset($_POST["checkbox"])) {
                 // $_POST["remember_me"]=true;
-                dbconnection::insert_token($users);
+                dbconnection::insert_token($users); ////////
             }
             //echo"cookie";
             //  echo $_COOKIE["remember_me"];
             //require_once("View/download.php");
             return true;
-           // header("Location: View/download.php");
+            // header("Location: View/download.php");
         } else {
             //echo "please enter the right password or email";
             return false;
         }
     }
+    public static function delete_user_from_token_table($userId)
+    {
+        $deleted = Capsule::table('token')->where('userid', '=', $userId)->delete();
+        echo "deleted";
+
+    }
+    public static function delete_user_from_order_table($userId)
+    {
+        $deleted = Capsule::table('order')->where('user_id', '=', $userId)->delete();
+        echo "deleted";
+
+    }
+    public static function delete_user($userId)
+    {
+        $deleted = Capsule::table('user')->where('userid', '=', $userId)->delete();
+        echo "deleted";
+
+    }
     public static function insert_token($userid)
     {
         $val = sha1(mt_rand(1, 90000) . 'SALT');
-        setcookie("remember_me", $val, 2147483647);
+        //$val=4;
+        setcookie("remember_me", $val, time() + 3600, '/');
         Capsule::table('token')->insert([
             'remember_me' => "$val",
             'userid' => "$userid",
@@ -105,7 +124,7 @@ class dbconnection
     public static function update_cookie($cookie)
     {
         $val = sha1(mt_rand(1, 90000) . 'SALT');
-        setcookie("remember_me", $val, 2147483647);
+        setcookie("remember_me", $val, 2147483647, '/');
         $affected = Capsule::table('token')
             ->where('remember_me', $cookie)
             ->update(['remember_me' => "$val"]);
@@ -123,62 +142,91 @@ class dbconnection
 //getting the auto generated user id from the DB
         $userId = Capsule::table('user')->where('email', '=', $myemail)->value('userid');
 
+        //Capsule::firstOrCreate(['productid' => 1]);
+
 //inserting date of payment and setting download count to 0 &user id
 
         Capsule::table('order')->insert(
-            ['date' => date('Y-m-d'), 'download-count' => 0,'productid'=> 1, 'user_id' => $userId] 
+            ['date' => date('Y-m-d'), 'download-count' => 0, 'user_id' => $userId, 'productid' => 1]
 
-        );}
+        );
+
+    }
 
     /*static  function insert_user_test()
-{
-//$user->getUserid();
-Capsule::table('user')->insert([
-'email' => "Dina@yahoo.com",
-'password' => sha1(123456)
-]);
-
-}*/
-
-static function insertOrder($order_date,$user_id)
-{
-    Capsule::table('order')->insert([
-        'date' =>"$order_date",
-        'user_id'=>"$user_id",
-        'productid'=> 1
-
+    {
+    //$user->getUserid();
+    Capsule::table('user')->insert([
+    'email' => "Dina@yahoo.com",
+    'password' => sha1(123456)
     ]);
-}
-static function  countOrder($user_id)
-{
 
-    $orders = Capsule::table('order')
-        ->select('user_id')
-        ->where('user_id', '=',"$user_id")->count();
-    echo $orders;
-    return $orders;
-}
-   public static function select_count($userid)
+    }*/
+
+    public static function insertOrder($order_date, $user_id)
+    {
+        Capsule::table('order')->insert([
+            'date' => "$order_date",
+            'user_id' => "$user_id",
+            'productid' => 1,
+
+        ]);
+    }
+    public static function countOrder($user_id)
+    {
+
+        $orders = Capsule::table('order')
+            ->select('user_id')
+            ->where('user_id', '=', "$user_id")->count();
+        echo $orders;
+        return $orders;
+    }
+    public static function select_count($userid)
     {
 
         $count = Capsule::table('order')
             ->select('download-count')
             ->where('user_id', '=', "$userid")
             ->value("download-count");
+        //$count++;
         return $count;
     }
-       public static function update_count($count,$userid)
+    public static function update_count($count, $userid)
     {
-        
- 
+
         $affected = Capsule::table('order')
-            ->where('user_id', '=' ,"$userid")
+            ->where('user_id', '=', "$userid")
             ->update(['download-count' => "$count"]);
     }
-    public static function delete_cookie(){
+    public static function select_rememberme()
+    {
+
+    }
+    public static function delete_cookie($cookie)
+    {
+        $deleted = Capsule::table('token')->where('remember_me', '=', $cookie)->delete();
+        echo "deleted";
 
     }
 
+    public static function get_productName()
+    {
+        $product_id = 1;
+        $old_name = Capsule::table('product')
+            ->select('download-file')
+            ->where('productid', '=', "$product_id")
+            ->value("download-file");
+        echo $old_name;
+        return $old_name;
 
+    }
+    public static function update_productName($new_name)
+    {
+        $product_id = 1;
+        $affected = Capsule::table('product')
+            ->where('productid', '=', "$product_id")
+            ->update(['download-file' => "$new_name"]);
+        echo $new_name;
+    }
 
 }
