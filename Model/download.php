@@ -27,9 +27,9 @@ if(isset($_GET['path']))
         die();
     }
     else{
-        echo "File does not exist.";
+        echo "<div style='background-color: #404F5E'><h1 style='color: white'>File does not exist.</h1></div>";
     }
 }
 else
-    echo "Filename is not defined."
+    echo "<div style='background-color: #404F5E'><h1 style='color: white'>Filename is not defined.</h1></div>";
 ?>

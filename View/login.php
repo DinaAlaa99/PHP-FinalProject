@@ -11,21 +11,13 @@ if (!isset($_SESSION["id"])) {
         if ($check) {
             //$page = "uipage";
             $userid = dbconnection::select_userId($user);
-
-            //var_dump($userid);
             $_SESSION["id"] = $userid;
-
             header("Location:uipage.php");
         } else {
-            // $page = "login";
-            echo "email or password is invalid";
+            echo "<div style='background-color: #404F5E'><h1 style='color: white'>email or password is invalid.</h1></div>";
             header("Location:login.php");
 
         }
-
-        echo "<br>";
-        echo "<br>";
-
     }} else {
     header("Location:uipage.php");
 }
@@ -34,18 +26,13 @@ if (!isset($_SESSION["id"])) {
 <!DOCTYPE html>
 <?php include "head.php"?>
 <title> Login Page </title>
-
-
 </head>
 <body>
-
 <div class="content">
     <div class="left">
         <img src="../images/img2.png" alt="">
         <h1 class = "logo">XYZ</h1>
     </div>
-
-
     <div class="right">
         <div class="login">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
@@ -64,7 +51,5 @@ if (!isset($_SESSION["id"])) {
     </div>
 
 </div>
-
-
 </body>
 </html>

@@ -1,10 +1,11 @@
 <?php
 
-echo "<pre>";
+//echo "<pre>";
 var_dump($_COOKIE);
 echo "</pre>";
 session_start();
 require_once "vendor/autoload.php";
+
 $mydb = new dbconnection();
 //$mydb->insert_user();
 //$_SESSION["id"]=5;

@@ -21,7 +21,6 @@ class dbconnection
 
     public static function insert_user($user)
     {
-        //$user->getUserid();
         Capsule::table('user')->insert([
             'email' => $user->getEmail(),
             'password' => $user->getpassword(),
@@ -30,17 +29,12 @@ class dbconnection
     }
     public static function select_userId($user)
     {
-        // var_dump($user);
         $myemail = $user->getEmail();
         $id = Capsule::table('user')
             ->select('userid')
             ->where('email', 'like', "$myemail")
             ->value("userid");
-
-        var_dump($id);
-
         return $id;
-
     }
     public static function select_user($user)
     {
@@ -51,22 +45,64 @@ class dbconnection
             ->where('email', '=', $myemail)
             ->where('password', '=', $mypassword)
             ->value("userid");
-
-        
         $userid = $users;
-        echo($users);
-        //echo "<br>";=========
         if (is_numeric($users)) {
             if (isset($_POST["checkbox"])) {
-                // $_POST["remember_me"]=true;
-                dbconnection::insert_token($users);////////
-                
+                dbconnection::insert_token($users);
             }
             return true;
         } else {
-            //echo "please enter the right password or email";
             return false;
         }
+    }
+    public static function select_user_email($userId,$email)
+    {
+        $id = Capsule::table('user')
+            ->select('userid')
+            ->where('email', 'like', "$email")
+            ->value("userid");
+        if($userId==$id)
+        {
+            return true;
+        }
+        else if(is_numeric($id)) //there is a user with the same email
+        {
+            return false;
+        }
+        else{
+            return true;
+        }
+
+      
+    }
+    
+    public static function select_user_password($userId,$oldpassword)
+    {
+
+        $password = Capsule::table('user')
+            ->select('password')
+            ->where('userid', '=', $userId)
+            ->value("password");
+        if (strcmp($password,sha1($oldpassword)) == 0) {
+             return true;
+        }
+        else 
+        {
+            echo "<div style='background-color: #404F5E'><h1 style='color: white'>you entered a wrong password.</h1></div>";
+        }
+    }
+    public static function update_user($user,$userId)
+    {
+        $affected = Capsule::table('user')
+        ->where('userid', $userId)
+        ->update(['email' => $user->getEmail(),
+                  'password' => $user->getpassword()]);
+       
+        if($affected)
+        {
+            echo "<div style='background-color: #404F5E'><h1 style='color: white'>data updated successfully.</h1></div>";
+        }
+    
     }
     public static function delete_user_from_token_table($userId)
     {
@@ -99,7 +135,6 @@ class dbconnection
     }
     public static function select_cookie($cookie)
     {
-
         $cookie_id = Capsule::table('token')
             ->select('userid')
             ->where('remember_me', 'like', "$cookie")
@@ -134,40 +169,21 @@ class dbconnection
         );
 //getting the auto generated user id from the DB
         $userId = Capsule::table('user')->where('email', '=', $myemail)->value('userid');
-
-        //Capsule::firstOrCreate(['productid' => 1]);
-
 //inserting date of payment and setting download count to 0 &user id
-
         Capsule::table('order')->insert(
             ['date' => date('Y-m-d'), 'download-count' => 0, 'user_id' => $userId, 'productid' => 1]
-
         );
-
     }
-
-    /*static  function insert_user_test()
-    {
-    //$user->getUserid();
-    Capsule::table('user')->insert([
-    'email' => "Dina@yahoo.com",
-    'password' => sha1(123456)
-    ]);
-
-    }*/
-
     public static function insertOrder($order_date, $user_id)
     {
         Capsule::table('order')->insert([
             'date' => "$order_date",
             'user_id' => "$user_id",
             'productid' => 1,
-
         ]);
     }
     public static function countOrder($user_id)
     {
-
         $orders = Capsule::table('order')
             ->select('user_id')
             ->where('user_id', '=', "$user_id")->count();
@@ -176,32 +192,23 @@ class dbconnection
     }
     public static function select_count($userid)
     {
-
         $count = Capsule::table('order')
             ->select('download-count')
             ->where('user_id', '=', "$userid")
             ->value("download-count");
-        //$count++;
         return $count;
     }
     public static function update_count($count, $userid)
     {
-
         $affected = Capsule::table('order')
             ->where('user_id', '=', "$userid")
             ->update(['download-count' => "$count"]);
     }
-    public static function select_rememberme()
-    {
-
-    }
     public static function delete_cookie($cookie)
     {
         $deleted = Capsule::table('token')->where('remember_me', '=', $cookie)->delete();
-        echo "deleted";
-
+        echo "<div style='background-color: #404F5E'><h1 style='color: white'>deleted.</h1></div>";
     }
-
     public static function get_productName()
     {
         $product_id = 1;
@@ -209,9 +216,8 @@ class dbconnection
             ->select('download-file')
             ->where('productid', '=', "$product_id")
             ->value("download-file");
-        echo $old_name;
+        echo "<div style='background-color: #404F5E'><h1 style='color: white'>$old_name</h1></div>";
         return $old_name;
-
     }
     public static function update_productName($new_name)
     {
@@ -219,9 +225,7 @@ class dbconnection
         $affected = Capsule::table('product')
             ->where('productid', '=', "$product_id")
             ->update(['download-file' => "$new_name"]);
-        echo $new_name;
+        echo "<div style='background-color: #404F5E'><h1 style='color: white'>$new_name</h1></div>";
     }
 
 }
-
-
