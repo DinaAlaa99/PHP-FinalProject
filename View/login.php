@@ -9,7 +9,6 @@ if (!isset($_SESSION["id"])) {
         $user = new user($email, $password);
         $check = dbconnection::select_user($user);
         if ($check) {
-            //$page = "uipage";
             $userid = dbconnection::select_userId($user);
             $_SESSION["id"] = $userid;
             header("Location:uipage.php");
