@@ -4,22 +4,13 @@ require_once "../vendor/autoload.php";
 $mydb = new dbconnection();
 if (isset($_POST["submit"])) {
     if (validate::validate_data() == 1) {
-        //require_once "View/login.php";
-        //$page = "login";
         header("Location:login.php");
-
     } elseif (validate::validate_data() == 0) {
-        //$page="paymentpage";
         header("Location:paymentPage.php");
-
-        echo "user already exists";
+        echo "<div style='background-color: #404F5E'><h1 style='color: white'>user already exists.</h1></div>";
     } elseif (validate::validate_data() == -1) {
-        //$page="unsuccessful";
-        // $page = "paymentpage";
         header("Location:paymentPage.php");
-
     }
-
 }
 ?>
     <?php include "head.php"?>
@@ -27,14 +18,11 @@ if (isset($_POST["submit"])) {
 
 </head>
 <body>
-
 <div class="content">
-
    <div class="left">
         <img src="../images/img2.png" alt="">
         <h1 class = "logo">XYZ</h1>
     </div>
-
     <div class="right">
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <h2>E-mail</h2>
@@ -54,11 +42,7 @@ if (isset($_POST["submit"])) {
         <br>
         <a href="login.php">already have an acount</a>
     </div>
-
-
 </div>
-
-
 </body>
 
 </html>

@@ -9,7 +9,6 @@ if ($_SESSION["id"]) {
         $newPassword = ($_POST['newpassword']);
         $userId = $_SESSION["id"];
 
-        
         if ($newemail!="") {
             if (dbconnection::select_user_email($userId, $newemail)) {
                 if ($oldpassword!="") {
@@ -17,18 +16,19 @@ if ($_SESSION["id"]) {
                         if ($newPassword!="") {
                             $user = new user($newemail, $newPassword);
                             dbconnection::update_user($user,$userId);
+                            echo "<div style='background-color: #404F5E; width: 150px;'><footer style='color: white'>data updated successfully</footer></div>";
+
                         } else {
-                            echo "please enter the new password";
+                            echo "<div style='background-color: #404F5E; width: 150px;'><h1 style='color: white'>please enter the new password</h1></div>";
                         }
                     }
                 } else {
-                    echo "please enter your old password";
+                    echo "<div style='background-color: #404F5E width: 150px;'><h1 style='color: white'>please enter your old password</h1></div>";
                 }
             }
         }
         else{
-            echo "please enter the new email";
-        
+            echo "<div style='background-color: #404F5E width: 150px;'><h1 style='color: white'>please enter the new email</h1></div>";
         }
     }
 

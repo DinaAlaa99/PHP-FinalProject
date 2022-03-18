@@ -10,10 +10,6 @@ class product{
         $this->setProductName($product_name);
         $this->setDownloadFileLink($download_file_link);
     }
-    
-
-   
-
     /**
      * Get the value of product_id
      */

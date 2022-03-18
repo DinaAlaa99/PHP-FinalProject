@@ -3,40 +3,18 @@ require_once "vendor/autoload.php";
 
 class login
 {
-    //public static $flag =-1;
-    //$_SESSION["id"] = 5;
-
-    ///<!--<?php echo $_SERVER["PHP_SELF"];
-
     public static function check_Login()
     {
-
-//            echo"cookie";
-        //            var_dump($_COOKIE);
-        //            die;
-        // echo((dbconnection::select_cookie($_COOKIE["remember_me"]));
         if (isset($_SESSION["id"]) && is_numeric($_SESSION["id"])) {
-            //echo "done session";
             return true; //is_numeric(dbconnection::select_cookie($_COOKIE["remember_me"]))
         } elseif (isset($_COOKIE["remember_me"])) {
-//            echo"cookie";
-            //            var_dump($_COOKIE);
-            //            die;
-            //dbconnection::update_cookie($_COOKIE["remember_me"]);
-            // echo dbconnection::select_cookie_userId($_COOKIE["remember_me"]);
             $c = $_COOKIE["remember_me"];
             $_SESSION["userId"] = dbconnection::select_cookie_userId($c);
-            // echo "done cookeki";
             return true;
 
         } else {
-            echo "gg";
             return false;
-            echo "false";
-
         }
-        //return $flag;
-
     }
     public static function redirect($url)
     {
