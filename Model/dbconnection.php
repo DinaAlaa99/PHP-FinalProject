@@ -107,19 +107,19 @@ class dbconnection
     public static function delete_user_from_token_table($userId)
     {
         $deleted = Capsule::table('token')->where('userid', '=', $userId)->delete();
-        echo "deleted";
+ 
 
     }
     public static function delete_user_from_order_table($userId)
     {
         $deleted = Capsule::table('order')->where('user_id', '=', $userId)->delete();
-        echo "deleted";
+        
 
     }
     public static function delete_user($userId)
     {
         $deleted = Capsule::table('user')->where('userid', '=', $userId)->delete();
-        echo "deleted";
+       
 
     }
     public static function insert_token($userid)
