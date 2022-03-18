@@ -216,7 +216,7 @@ class dbconnection
             ->select('download-file')
             ->where('productid', '=', "$product_id")
             ->value("download-file");
-        echo "<div style='background-color: #404F5E'><h1 style='color: white'>$old_name</h1></div>";
+        //echo "<div style='background-color: #404F5E'><h1 style='color: white'>$old_name</h1></div>";
         return $old_name;
     }
     public static function update_productName($new_name)
@@ -225,7 +225,7 @@ class dbconnection
         $affected = Capsule::table('product')
             ->where('productid', '=', "$product_id")
             ->update(['download-file' => "$new_name"]);
-        echo "<div style='background-color: #404F5E'><h1 style='color: white'>$new_name</h1></div>";
+        //echo "<div style='background-color: #404F5E'><h1 style='color: white'>$new_name</h1></div>";
     }
 
 }
