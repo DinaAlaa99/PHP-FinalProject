@@ -49,17 +49,9 @@ if (isset($_SESSION["id"])) {
             </form><br>
           <form method="get" action="logout.php" >
               <button type="submit" name="logout"class="button">logout</button>
-<<<<<<< HEAD
-
             </form><br>
               <form method="get" action="editProfile.php" >
               <button type="submit" name="Edit Profile"class="button">Edit Profile</button>
-
-=======
-            </form><br>
-              <form method="get" action="editProfile.php" >
-              <button type="submit" name="Edit Profile"class="button">Edit Profile</button>
->>>>>>> origin/css
             </form>
         </div>
     </div>
