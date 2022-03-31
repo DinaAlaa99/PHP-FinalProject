@@ -41,11 +41,11 @@ The user will go to the download page so he can download the product.the users c
     * composer install
     * composer validate
     * composer dump-autload
- 6. In your browser http://localhost/(ProjectName)/
+ 6. In your browser (http://localhost/(ProjectName)/)
     
  # GitHub link
  ---------------------------------
-GitHub link for the project:()
+GitHub link for the project:(https://github.com/DinaAlaa99/PHP-FinalProject)
 
 # Team Members
  ---------------------------------
