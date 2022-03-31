@@ -30,6 +30,7 @@ The user will go to the download page so he can download the product.the users c
     {
       - MySQL 
      }
+     
  # IInstallation
  ---------------------------------
 1. clone the project 
@@ -38,7 +39,7 @@ The user will go to the download page so he can download the product.the users c
     * composer install
     * composer validate
     * composer dump-autload
-    * 
+    
  # GitHub link
  ---------------------------------
 GitHub link for the project:()
