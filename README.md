@@ -31,14 +31,17 @@ The user will go to the download page so he can download the product.the users c
       - MySQL 
      }
      
- # IInstallation
+ # Installation
  ---------------------------------
 1. clone the project 
-2. install composer
-3. in project directory -- run the following commands
+2. Download Xamp
+3. Start LocalHost - MySql Sessions
+4. install composer
+5. in project directory -- run the following commands
     * composer install
     * composer validate
     * composer dump-autload
+ 6. In your browser http://localhost/(ProjectName)/
     
  # GitHub link
  ---------------------------------
